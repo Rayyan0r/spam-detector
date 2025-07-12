@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Page config
-st.set_page_config(page_title="Email Spam Detector", page_icon="📧", layout="centered")
+st.set_page_config(page_title="Spam Detector", page_icon="📧", layout="centered")
 
 # Custom style
 st.markdown("""
@@ -24,7 +24,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Header
-st.title("📧 Email Spam Detector")
+st.title("📧 Spam Detector")
 st.write("This app uses a machine learning model to detect if a message is **spam** or **not spam**.")
 
 # Clean text
