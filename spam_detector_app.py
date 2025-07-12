@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 # Load and clean data
 @st.cache_data
 def load_data():
-    df = pd.read_csv(r"C:\Users\Pc\Desktop\spam detection\spam.csv", sep="\t", header=None, names=["label", "message"])  
+    df = pd.read_csv("spam.csv", sep="\t", header=None, names=["label", "message"])
     st.write(df.head())
     st.write(df['label'].value_counts())
     df.columns = ['label', 'message']
