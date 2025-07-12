@@ -104,7 +104,7 @@ if st.button("🔎 Check Message"):
 st.markdown("""
 ---
 Made with ❤️ using Streamlit  
-[View Source on GitHub](https://github.com/YourUsername/spam-detector)
+[View Source on GitHub](https://github.com/rayyan0r/spam-detector)
 """)
    
 
