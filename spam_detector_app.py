@@ -103,7 +103,7 @@ if st.button("🔎 Check Message"):
 # Footer
 st.markdown("""
 ---
-Made with ❤️ using Streamlit  
+TEAM CLOUDCORE
 [View Source on GitHub](https://github.com/Rayyan0r/spam-detector)
 """)
    
