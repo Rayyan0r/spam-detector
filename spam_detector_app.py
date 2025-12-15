@@ -6,7 +6,12 @@ import nltk
 import time
 import requests
 
-from streamlit_lottie import st_lottie
+# -------- SAFE LOTTIE IMPORT (VERY IMPORTANT) --------
+try:
+    from streamlit_lottie import st_lottie
+except ModuleNotFoundError:
+    st_lottie = None
+
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
@@ -34,7 +39,7 @@ st.set_page_config(
 # ---------------- LOTTIE LOADER ----------------
 def load_lottie_url(url):
     try:
-        r = requests.get(url)
+        r = requests.get(url, timeout=5)
         if r.status_code == 200:
             return r.json()
     except:
@@ -113,7 +118,7 @@ textarea::placeholder {
 # ---------------- HEADER ----------------
 st.title("📧 Email Spam Detection System")
 
-if lottie_detect:
+if st_lottie and lottie_detect:
     st_lottie(lottie_detect, height=200)
 
 st.markdown(
@@ -147,7 +152,7 @@ def load_data():
             names=["label", "message"]
         )
     except FileNotFoundError:
-        st.error("❌ spam.csv file not found")
+        st.error("❌ spam.csv file not found in repository")
         st.stop()
 
     df["label_num"] = df["label"].map({"ham": 0, "spam": 1})
@@ -227,11 +232,11 @@ if st.button("🔍 Detect Spam"):
         st.progress(float(probability))
 
         if prediction == 1:
-            if lottie_warning:
+            if st_lottie and lottie_warning:
                 st_lottie(lottie_warning, height=180)
             st.error(f"🚨 **SPAM MESSAGE** (Confidence: {probability:.2%})")
         else:
-            if lottie_success:
+            if st_lottie and lottie_success:
                 st_lottie(lottie_success, height=180)
             st.success(f"✅ **NOT SPAM** (Confidence: {probability:.2%})")
 
